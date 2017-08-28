@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="margin-bottom: 50px;">Wybierz formularz który chcesz wysłać</h2>
+<div class="container">
+    <div class="row">
+        <input class="input-style btn btn-primary btn-lg btn-block" type="button" value="Wniosek o przedłużenie czasu rejestracji (sesji) &raquo;" onclick="location.href='@Url.Action("CreateFormPrzedluzenie","CreateForm")'" />
+        <input class="btn btn-primary btn-lg input-style btn-block" type="button" value="Wniosek o powtarzanie przedmiotu! &raquo;" onclick="location.href='@Url.Action("CreateFormPowtarzanie","CreateForm")'" />
+        <input class="btn btn-primary btn-lg input-style btn-block" type="button" value="Zapisz się na przedłużanie legitymacji studenckiej &raquo;" onclick="location.href='@Url.Action("CreateFormLegitymacja","CreateForm")'" />
+    </div>
+</div>

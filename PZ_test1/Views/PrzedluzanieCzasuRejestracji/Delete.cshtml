@@ -1,0 +1,94 @@
+﻿@model PZ_test1.PrzedluzanieCzasuRejestracjiSet
+
+@{
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+<h2>Usuń formularz przedłużenia czasu rejestracji</h2>
+
+<h3>Jesteś pewien że chcesz usunać ten formularz? Jeszcze możesz się wycofać</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NrLegitymacji)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NrLegitymacji)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Semestr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Semestr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rok)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rok)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kierunek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kierunek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrybStudiow)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrybStudiow)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Przedmiot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Przedmiot)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Wróć do listy formularzy", "Index")
+        </div>
+    }
+</div>

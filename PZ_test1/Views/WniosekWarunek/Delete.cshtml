@@ -1,0 +1,110 @@
+﻿@model PZ_test1.WniosekWarunek
+
+@{
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+<h2>Usuń wniosek o warunek</h2>
+
+<h3>Jesteś pewien że chcesz usunąć ten wniosek?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NrLegitymacji)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NrLegitymacji)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Semestr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Semestr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rok)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rok)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kierunek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kierunek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrybStudiow)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrybStudiow)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Przedmiot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Przedmiot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ECTS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ECTS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TerminZaliczenia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TerminZaliczenia)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń formularz" class="btn btn-danger" /> |
+            @Html.ActionLink("Wróć do listy formularzy", "Index")
+        </div>
+    }
+</div>

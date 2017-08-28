@@ -1,0 +1,117 @@
+﻿@model PZ_test1.WniosekWarunek
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+<h2>Szczegóły formularza</h2>
+
+<div>
+    <h4>Wniosek Warunek</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NrLegitymacji)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NrLegitymacji)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Semestr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Semestr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rok)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rok)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kierunek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kierunek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrybStudiow)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrybStudiow)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Przedmiot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Przedmiot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ECTS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ECTS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TerminZaliczenia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TerminZaliczenia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Students.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Students.Email)
+        </dd>
+    </dl>
+</div>
+<p>
+    <div class="btn btn-success">@Html.ActionLink("Potwierdź", "Accept", new { id = Model.Id })</div>
+    <div class="btn btn-danger">@Html.ActionLink("Odrzuć", "Reject", new { id = Model.Id })</div>
+
+    @Html.ActionLink("Edytuj", "Edit", new {id = Model.Id}) |
+    @Html.ActionLink("Wróć do listy formularzy", "Index")
+</p>

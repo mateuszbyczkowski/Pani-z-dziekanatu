@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pani z dziekanatu</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2308591949421741",
+    enable_page_level_ads: true
+  });
+    </script>
+</head>
+<body>         
+<h1 id="login-title">Pani z dziekanatu</h1>
+<div class="container body-content login-container">
+            @RenderBody()
+    <hr/>
+    <footer>
+        <p style="text-align: center">&copy; @DateTime.Now.Year - Pani z dziekanatu. Wszystkie prawa zastrzeżone</p>
+    </footer>
+</div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

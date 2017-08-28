@@ -1,0 +1,17 @@
+﻿@model PZ_test1.PrzedluzanieCzasuRejestracjiSet
+
+@{
+    ViewBag.Title = "Kreator - przedluzanie rejestracji";
+
+}
+
+<h2>Kreator wniosku o przedłużenie czasu rejestracji</h2>
+
+<div>
+    @using (Html.BeginForm("CreateFormPrzedluzenie", "CreateForm"))
+    {
+        @Html.EditorFor(m=>m)
+        <input class="btn btn-lg btn-info" style="margin-top: 5px" type="submit" value="Wyślij formularz" />
+    }
+
+</div>

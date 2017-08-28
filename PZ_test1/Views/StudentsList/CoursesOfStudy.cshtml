@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "CoursesOfStudy";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+<h2>Kierunki studiów studenta</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Stopień
+        </th>
+        <th>
+            Semestr
+        </th>
+        <th>
+            Typstudiow
+        </th>
+        <th>
+            Nazwa
+        </th>
+        <th>
+            Powtarzane przedmioty
+        </th>
+        <th>
+            Liczba ECTS
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @ViewData["stopien"]
+        </td>
+        <td>
+            @ViewData["semestr"]
+        </td>
+        <td>
+            @ViewData["typstudiow"]
+        </td>
+        <td>
+            @ViewData["nazwa"]
+        </td>
+        <td>
+            @ViewData["nazwa"]
+        </td>
+        <td>
+            @ViewData["nazwa"]
+        </td>
+    </tr>
+</table>
+           
+ 
+

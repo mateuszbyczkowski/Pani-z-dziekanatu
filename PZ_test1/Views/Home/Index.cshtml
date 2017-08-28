@@ -1,0 +1,16 @@
+﻿@using System.Activities
+@{
+    ViewBag.Title = "Strona główna";
+}
+
+<div class="jumbotron pos-relative">
+    <h1>Pani z dziekanatu</h1>
+    <img class="jumbo-img" src="~/Content/Images/1.jpg" />
+    <p class="lead">Aplikacja która ułatwi tobie komunikację z dziekanatem! Bez czekania, bez kolejek bez stresu!</p>
+    <input class="btn btn-primary btn-lg" type="button" value="Wyślij swój formularz! &raquo;" onclick="location.href='@Url.Action("Index", "CreateForm" )'" />
+    
+</div>
+
+<div class="row">
+    <center><img id="home-img"  src="~/Content/Images/2.jpg" /></center>
+</div>

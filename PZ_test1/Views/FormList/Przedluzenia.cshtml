@@ -1,0 +1,93 @@
+﻿@model IEnumerable<PZ_test1.PrzedluzanieCzasuRejestracjiSet>
+
+@{
+    ViewBag.Title = "Przedluzenia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Lista twoich formularzy o przedłużenie czasu rejestracji</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Imie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NrLegitymacji)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Semestr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rok)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kierunek)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrybStudiow)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Przedmiot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NrLegitymacji)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semestr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rok)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kierunek)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrybStudiow)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Przedmiot)
+            </td>
+                @{
+                    if (Html.DisplayFor(modelItem => item.Status).ToString().Equals("Zatwierdzony"))
+                    {
+                        <td class="success">
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="danger">
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        
+                    }
+                }
+        </tr>
+    }
+</table>

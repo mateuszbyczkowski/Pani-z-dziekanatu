@@ -1,0 +1,57 @@
+﻿.tab-pane {
+    position: relative;
+}
+
+.calendar {
+    width: 10em;
+    height: 7em;
+    border: 1px solid black;
+    position: absolute;
+}
+
+.calendar:hover {
+    background-color: rgba(056, 056, 256, 0.2);
+}
+
+.calendar-1, .calendar-3, .calendar-5,.calendar-7, .calendar-9 {
+    left: 16em;
+}
+.calendar-2, .calendar-4,  .calendar-6,  .calendar-8,.calendar-10 {
+    left: 36.2em;
+}
+
+.calendar-1, .calendar-2 {
+    top: 11em;
+}
+.calendar-3, .calendar-4 {
+    top: 19em;
+}
+.calendar-5, .calendar-6 {
+    top: 27em;
+}
+.calendar-7, .calendar-8 {
+    top: 35em;
+}
+.calendar-9, .calendar-10 {
+    top: 43em;
+}
+
+.cal-1,.cal-2,.cal-3,.cal-4,.cal-5,.cal-6,.cal-7,.cal-8,.cal-9,.cal-10 {
+    height: 6.5em;
+}
+
+.cal-1 , .cal-2 {
+    top: 10.5em;
+}
+.cal-3, .cal-4 {
+     top: 17.3em;
+}
+.cal-5, .cal-6 {
+     top: 24em;
+}
+ .cal-7, .cal-8 {
+     top: 30.6em;
+}
+ .cal-9,.cal-10 {
+    top: 37.3em;
+}

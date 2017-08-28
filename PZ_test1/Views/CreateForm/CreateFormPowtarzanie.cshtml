@@ -1,0 +1,15 @@
+﻿@model PZ_test1.WniosekWarunek
+
+@{
+    ViewBag.Title = "Kreator - powtarzanie przedmiotu";
+}
+
+<h2>Kreator wniosku o powtarzanie przedmiotu</h2>
+
+<div>
+    @using (Html.BeginForm("CreateFormPowtarzanie", "CreateForm"))
+    {
+        @Html.EditorFor(m => m)
+        <input class="btn btn-lg btn-info" style="margin-top: 5px" type="submit" value="Wyślij formularz" />
+    }
+</div>
