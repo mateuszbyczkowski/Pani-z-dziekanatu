@@ -17,9 +17,9 @@ namespace PZ_test1.Models
         public string Stanowisko { get; set; }
         public string Email { get; set; }
         public string Passwd { get; set; }
-        [ForeignKey("ApplicationUser")]
+       // [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        public  ApplicationUser ApplicationUser { get; set; }
         public virtual ICollection<Termin> Termin { get; set; }
     }
 }

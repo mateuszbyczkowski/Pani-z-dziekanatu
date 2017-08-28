@@ -47,20 +47,20 @@ namespace PZ_test1.Models
         //moj kod
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-          
+
             // one-to-zero or one relationship between ApplicationUser and Customer
             // UserId column in Customers table will be foreign key
-//            modelBuilder.Entity<ApplicationUser>()
-//                .HasOptional(m => m.Employees)
-//                .WithRequired(m => m.ApplicationUser);
-////                .Map(p => p.MapKey("UserId"));
-////
-//            modelBuilder.Entity<ApplicationUser>()
-//                .HasOptional(m => m.Students)
-//                .WithRequired(m => m.ApplicationUser);
-////                .Map(p => p.MapKey("UserId"));
+            modelBuilder.Entity<ApplicationUser>()
+                .HasOptional(m => m.Employees)
+                .WithRequired(m => m.ApplicationUser);
+            //                .Map(p => p.MapKey("UserId"));
+            //
+            modelBuilder.Entity<ApplicationUser>()
+                .HasOptional(m => m.Students)
+                .WithRequired(m => m.ApplicationUser);
+            //                .Map(p => p.MapKey("UserId"));
 
-//            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
             //modelBuilder.Entity<Students>()
             //    .HasMany(m => m.StudentCourses)
             //    .WithRequired(m=> m.Students)
@@ -87,7 +87,6 @@ namespace PZ_test1.Models
             //    c.ToTable("ModelStudentCourses");
             //});
 
-            base.OnModelCreating(modelBuilder);
             //koniec tematu obrad
         }
 

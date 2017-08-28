@@ -21,6 +21,6 @@ namespace PZ_test1.Models
         public string TypeOfStudy { get; set; }
 
         public virtual ListaKierunkow ListaKierunkow { get; set; }
-        public virtual Students Student { get; set; }
+        public virtual Students Students { get; set; }
     }
 }
