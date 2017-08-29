@@ -22,8 +22,7 @@ namespace PZ_test1.Models
         public virtual Students Students { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
-            // Note the authenticationType must match the one defined in
-            // CookieAuthenticationOptions.AuthenticationType 
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType 
             var userIdentity = await manager.CreateIdentityAsync(
                 this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here 
@@ -47,20 +46,22 @@ namespace PZ_test1.Models
         //moj kod
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
+            base.OnModelCreating(modelBuilder);
             // one-to-zero or one relationship between ApplicationUser and Customer
             // UserId column in Customers table will be foreign key
             modelBuilder.Entity<ApplicationUser>()
                 .HasOptional(m => m.Employees)
                 .WithRequired(m => m.ApplicationUser);
-            //                .Map(p => p.MapKey("UserId"));
+//                            .Map(p => p.MapKey("UserId"));
             //
             modelBuilder.Entity<ApplicationUser>()
                 .HasOptional(m => m.Students)
                 .WithRequired(m => m.ApplicationUser);
-            //                .Map(p => p.MapKey("UserId"));
+//                            .Map(p => p.MapKey("UserId"));
 
-            base.OnModelCreating(modelBuilder);
+            //modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            //modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            //modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
             //modelBuilder.Entity<Students>()
             //    .HasMany(m => m.StudentCourses)
             //    .WithRequired(m=> m.Students)

@@ -23,16 +23,16 @@ namespace PZ_test1.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateFormPrzedluzenie(PrzedluzenieSesji przedluzanie)
+        public ActionResult CreateFormPrzedluzenie(PrzedluzenieSesji wniosek)
         {
             if (ModelState.IsValid)
             {
-                przedluzanie.Status = "Niezatwierdzony";
-                _db.PrzedluzenieSesji.Add(przedluzanie);
+                wniosek.Status = "Niezatwierdzony";
+                _db.PrzedluzenieSesji.Add(wniosek);
                 _db.SaveChanges();
-                return View();
+                return View("CreateFormPrzedluzenie");
             }
-            return View("CreateFormPrzedluzenie", przedluzanie);
+            return View("CreateFormPrzedluzenie", wniosek);
         }
 
         public ActionResult CreateFormPowtarzanie()
@@ -41,20 +41,16 @@ namespace PZ_test1.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateFormPowtarzanie(Warunki warunek)
+        public ActionResult CreateFormPowtarzanie(Warunki wniosek)
         {
-            
-            //ViewBag.Staus = warunek.Status;
-
             if (ModelState.IsValid)
             {
-                
-                warunek.Status = "Niezatwierdzony";
-                _db.Warunki.Add(warunek);
+                wniosek.Status = "Niezatwierdzony";
+                _db.Warunki.Add(wniosek);
                 _db.SaveChanges();
-                return View();
+                return View("CreateFormPowtarzanie");
             }
-            return View("CreateFormPowtarzanie", warunek);
+            return View("CreateFormPowtarzanie", wniosek);
         }
 
         public ActionResult CreateFormLegitymacja()

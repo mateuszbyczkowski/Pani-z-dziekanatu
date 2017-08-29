@@ -10,6 +10,11 @@ namespace PZ_test1.Models
     [Table("Termin")]
     public class Termin
     {
+        public Termin()
+        {
+                this.Employees = new HashSet<Employees>();
+                this.Students = new HashSet<Students>();
+        }
         [Key]
         public int Id { get; set; }
         public DateTime Date { get; set; }
@@ -18,7 +23,7 @@ namespace PZ_test1.Models
         public int? StudentId { get; set; }
         [ForeignKey("Employees")]
         public int EmployeeId { get; set; }
-        public virtual Employees Employees { get; set; }
-        public virtual Students Students { get; set; }
+        public virtual ICollection<Employees> Employees { get; set; }
+        public virtual ICollection<Students> Students { get; set; }
     }
 }

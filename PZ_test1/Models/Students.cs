@@ -10,6 +10,12 @@ namespace PZ_test1.Models
     [Table("Students")]
     public class Students
     {
+        public Students()
+        {
+                this.Warunki = new HashSet<Warunki>();
+                this.PrzedluzeniaSesji = new HashSet<PrzedluzenieSesji>();
+                this.Termin = new HashSet<Termin>();
+        }
         [Key]
         public int Id { get; set; }
         public string Email { get; set; }
@@ -22,7 +28,7 @@ namespace PZ_test1.Models
         public string Pesel { get; set; }
         public string PostCode { get; set; }
         public string Local { get; set; }
-        //[ForeignKey("ApplicationUser")]
+  //      [ForeignKey("AspNetUsers")]
         public string UserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
         //public virtual AspNetUsers AspNetUsers { get; set; }

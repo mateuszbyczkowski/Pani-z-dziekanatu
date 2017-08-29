@@ -10,6 +10,10 @@ namespace PZ_test1.Models
     [Table("Employees")]
     public class Employees
     {
+        public Employees()
+        {
+                this.Termin =  new HashSet<Termin>();
+        }
         [Key]
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -17,7 +21,7 @@ namespace PZ_test1.Models
         public string Stanowisko { get; set; }
         public string Email { get; set; }
         public string Passwd { get; set; }
-       // [ForeignKey("ApplicationUser")]
+ //       [ForeignKey("AspNetUsers")]
         public string UserId { get; set; }
         public  ApplicationUser ApplicationUser { get; set; }
         public virtual ICollection<Termin> Termin { get; set; }

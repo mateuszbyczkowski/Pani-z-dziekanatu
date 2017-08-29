@@ -10,6 +10,11 @@ namespace PZ_test1.Models
     [Table("ListaKierunkow")]
     public class ListaKierunkow
     {
+        public ListaKierunkow()
+        {
+                this.PowtarzanePrzedmioty = new HashSet<PowtarzanePrzedmioty>();
+                this.KierunkiStudiow = new HashSet<KierunkiStudiow>();
+        }
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
