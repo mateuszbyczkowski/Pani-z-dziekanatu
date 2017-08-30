@@ -212,7 +212,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Employees.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\KierunkiStudiow.cs" />
     <Compile Include="Models\ListaKierunkow.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

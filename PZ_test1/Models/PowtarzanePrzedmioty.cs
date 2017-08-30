@@ -20,7 +20,7 @@ namespace PZ_test1.Models
         public int ECTS { get; set; }
         public bool Passed { get; set; }
 
-        public virtual  ListaKierunkow ListaKierunkow { get; set; }
+        public virtual ListaKierunkow ListaKierunkow { get; set; }
         public virtual Students Students { get; set; }
     }
 }

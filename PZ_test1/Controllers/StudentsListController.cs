@@ -44,33 +44,34 @@ namespace PZ_test1.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             Students student = _db.Students.Find(id);
+            var studentProp = (from Stud in _db.Students
+                                    join  KierStud in _db.KierunkiStudiow on Stud.Id equals KierStud.StudentId
+                                    select new {KierStud.CoursId, KierStud.Degree, KierStud.Semestr, KierStud.TypeOfStudy}).ToList();
 
-            DbSet<KierunkiStudiow> KierunkiStudiow = _db.KierunkiStudiow;
-            DbSet<PowtarzanePrzedmioty> PowtarzanePrzedmioty = _db.PowtarzanePrzedmioty;
+            var studentProp3 = (from Stud in _db.Students
+                                join KierStud in _db.KierunkiStudiow on Stud.Id equals KierStud.StudentId
+                                join PwtPrzed in _db.PowtarzanePrzedmioty on Stud.Id equals PwtPrzed.StudentId.Value
+                                join ListKier in _db.ListaKierunkow on KierStud.CoursId equals ListKier.Id  where PwtPrzed.CourseId == ListKier.Id
+                                select new { ListKier.Id, KierStud.Degree, KierStud.Semestr, KierStud.TypeOfStudy, PwtPrzed.SubjectName, PwtPrzed.ECTS, PwtPrzed.Passed }).ToList();
 
-                foreach (KierunkiStudiow c in KierunkiStudiow)
-                {
-                    foreach (PowtarzanePrzedmioty crs in PowtarzanePrzedmioty)
-                    {
-                        if (student != null && (student.Id == c.StudentId && c.CoursId == crs.Id))
-                        {
-                            string stopien = c.Degree;
-                            string semestr = c.Semestr;
-                            string typstudiow = c.TypeOfStudy;
-                            string nazwa = crs.SubjectName;
+            var studentProp1 = (from Stud in _db.Students
+                                join KierStud in _db.KierunkiStudiow on Stud.Id equals KierStud.StudentId
+                                join ListKier in _db.ListaKierunkow on KierStud.CoursId equals ListKier.Id
+                                select new { ListKier.Id, KierStud.Degree, KierStud.Semestr, KierStud.TypeOfStudy }).ToList();
 
-                            ViewData["stopien"] = stopien;
-                            ViewData["semestr"] = semestr;
-                            ViewData["typstudiow"] = typstudiow;
-                            ViewData["nazwa"] = nazwa;
-                        }
-                    }         
-                }
+            var studentProp2 = (from Stud in _db.Students
+                                join PwtPrzed in _db.PowtarzanePrzedmioty on Stud.Id equals PwtPrzed.StudentId
+                                join ListKier in _db.ListaKierunkow on PwtPrzed.CourseId equals ListKier.Id
+                                select new { ListKier.Id, PwtPrzed.ECTS, PwtPrzed.SubjectName, PwtPrzed.Passed }).ToList();
 
+            ViewData["prop"] = studentProp;
+            ViewBag["prop1"] = studentProp1;
+            ViewData["prop2"] = studentProp2;
+            ViewData["prop3"] = studentProp3;
             return View();
         }
 

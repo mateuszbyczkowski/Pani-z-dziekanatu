@@ -1,3 +1,4 @@
+using Microsoft.AspNet.Identity.EntityFramework;
 using PZ_test1.Models;
 
 namespace PZ_test1
@@ -6,17 +7,27 @@ namespace PZ_test1
     using System.Data.Entity;
     using System.Linq;
 
-    public class DziekanatDbContext : DbContext
+    public class DziekanatDbContext : IdentityDbContext<ApplicationUser>
     {
 
         public DziekanatDbContext()
-            : base("name=DziekanatDbContext")
+            : base("name=DziekanatDbContext1")
         {
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ApplicationUser>().ToTable("ApplicationUser");
+            //modelBuilder.Entity<ApplicationUser>().Property(p => p.Id).HasColumnName("UserId");
+            modelBuilder.Entity<ApplicationUser>().HasOptional(d => d.Students).WithRequired(p => p.ApplicationUser);
+            modelBuilder.Entity<ApplicationUser>().HasOptional(d => d.Employees).WithRequired(p => p.ApplicationUser);
+
             base.OnModelCreating(modelBuilder);
+        }
+
+        public static DziekanatDbContext Create()
+        {
+            return new DziekanatDbContext();
         }
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }

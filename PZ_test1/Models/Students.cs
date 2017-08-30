@@ -12,9 +12,11 @@ namespace PZ_test1.Models
     {
         public Students()
         {
-                this.Warunki = new HashSet<Warunki>();
-                this.PrzedluzeniaSesji = new HashSet<PrzedluzenieSesji>();
-                this.Termin = new HashSet<Termin>();
+            this.Warunki = new HashSet<Warunki>();
+            this.PrzedluzeniaSesji = new HashSet<PrzedluzenieSesji>();
+            this.Termin = new HashSet<Termin>();
+            this.KierunkiStudiow = new HashSet<KierunkiStudiow>();
+            this.PowtarzanePrzedmioty = new HashSet<PowtarzanePrzedmioty>();
         }
         [Key]
         public int Id { get; set; }
@@ -35,6 +37,8 @@ namespace PZ_test1.Models
         public virtual ICollection<Warunki> Warunki { get; set; }
         public virtual ICollection<PrzedluzenieSesji> PrzedluzeniaSesji { get; set; }
         public virtual ICollection<Termin> Termin { get; set; }
+        public virtual ICollection<KierunkiStudiow> KierunkiStudiow { get; set; }
+        public virtual ICollection<PowtarzanePrzedmioty> PowtarzanePrzedmioty { get; set; }
 
     }
 }

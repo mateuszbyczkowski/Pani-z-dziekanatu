@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using PZ_test1.Models;
 namespace PZ_test1.Controllers
 {
@@ -12,8 +13,8 @@ namespace PZ_test1.Controllers
     public class FormListController : Controller
     {
         private DziekanatDbContext _db = new DziekanatDbContext();
-        protected ApplicationDbContext ApplicationDbContext { get; set; }
-        protected UserManager<ApplicationUser> UserManager { get; set; }
+
+        public ApplicationUser _user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
         // GET: FormList
         public ActionResult Index()
         {
@@ -22,17 +23,14 @@ namespace PZ_test1.Controllers
 
         public ActionResult Warunki()
         {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            
-            var wniosekWarunekSet = _db.Warunki.Include(w => w.Students).Where(p=>p.Students.Id == user.Students.Id);
-            return View(wniosekWarunekSet.ToList());
+            var wniosekWarunek = _db.Warunki.Include(w => w.Students).Where(p=>p.Students.Id == _user.Students.Id);
+            return View(wniosekWarunek.ToList());
         }
 
         public ActionResult Przedluzenia()
         {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            var przedluzanieCzasuRejestracjiSet = _db.PrzedluzenieSesji.Include(p => p.Students).Where(p => p.Students.Id == user.Students.Id);
-            return View(przedluzanieCzasuRejestracjiSet.ToList());
+            var przedluzanieCzasuRejestracji = _db.PrzedluzenieSesji.Include(w => w.Students).Where(p => p.Students.Id == _user.Students.Id);
+            return View(przedluzanieCzasuRejestracji.ToList());
         }
     }
 }
