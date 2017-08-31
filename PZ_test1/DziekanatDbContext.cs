@@ -20,7 +20,7 @@ namespace PZ_test1
             modelBuilder.Entity<ApplicationUser>().ToTable("ApplicationUser");
             //modelBuilder.Entity<ApplicationUser>().Property(p => p.Id).HasColumnName("UserId");
             modelBuilder.Entity<ApplicationUser>().HasOptional(d => d.Students).WithRequired(p => p.ApplicationUser);
-            modelBuilder.Entity<ApplicationUser>().HasOptional(d => d.Employees).WithRequired(p => p.ApplicationUser);
+            modelBuilder.Entity<ApplicationUser>().HasOptional(e => e.Employees).WithRequired(k => k.ApplicationUser);
 
             base.OnModelCreating(modelBuilder);
         }

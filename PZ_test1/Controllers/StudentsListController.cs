@@ -47,31 +47,27 @@ namespace PZ_test1.Controllers
                 //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Students student = _db.Students.Find(id);
-            var studentProp = (from Stud in _db.Students
-                                    join  KierStud in _db.KierunkiStudiow on Stud.Id equals KierStud.StudentId
-                                    select new {KierStud.CoursId, KierStud.Degree, KierStud.Semestr, KierStud.TypeOfStudy}).ToList();
+            //var studentProp = (from Stud in _db.Students
+            //                   join KierStud in _db.KierunkiStudiow on Stud.Id equals KierStud.StudentId
+            //                   select new { KierStud.CoursId, KierStud.Degree, KierStud.Semestr, KierStud.TypeOfStudy }).ToList();
 
-            var studentProp3 = (from Stud in _db.Students
-                                join KierStud in _db.KierunkiStudiow on Stud.Id equals KierStud.StudentId
-                                join PwtPrzed in _db.PowtarzanePrzedmioty on Stud.Id equals PwtPrzed.StudentId.Value
-                                join ListKier in _db.ListaKierunkow on KierStud.CoursId equals ListKier.Id  where PwtPrzed.CourseId == ListKier.Id
-                                select new { ListKier.Id, KierStud.Degree, KierStud.Semestr, KierStud.TypeOfStudy, PwtPrzed.SubjectName, PwtPrzed.ECTS, PwtPrzed.Passed }).ToList();
+            //var studentProp3 = (from Stud in _db.Students
+            //                    join KierStud in _db.KierunkiStudiow on Stud.Id equals KierStud.StudentId
+            //                    join PwtPrzed in _db.PowtarzanePrzedmioty on Stud.Id equals PwtPrzed.StudentId.Value
+            //                    join ListKier in _db.ListaKierunkow on KierStud.CoursId equals ListKier.Id
+            //                    where PwtPrzed.CourseId == ListKier.Id
+            //                    select new { ListKier.Id, KierStud.Degree, KierStud.Semestr, KierStud.TypeOfStudy, PwtPrzed.SubjectName, PwtPrzed.ECTS, PwtPrzed.Passed }).ToList();
 
-            var studentProp1 = (from Stud in _db.Students
-                                join KierStud in _db.KierunkiStudiow on Stud.Id equals KierStud.StudentId
-                                join ListKier in _db.ListaKierunkow on KierStud.CoursId equals ListKier.Id
-                                select new { ListKier.Id, KierStud.Degree, KierStud.Semestr, KierStud.TypeOfStudy }).ToList();
+            //var studentProp1 = (from Stud in _db.Students
+            //                    join KierStud in _db.KierunkiStudiow on Stud.Id equals KierStud.StudentId
+            //                    join ListKier in _db.ListaKierunkow on KierStud.CoursId equals ListKier.Id
+            //                    select new { ListKier.Name, KierStud.Degree, KierStud.Semestr, KierStud.TypeOfStudy }).ToList();
 
-            var studentProp2 = (from Stud in _db.Students
-                                join PwtPrzed in _db.PowtarzanePrzedmioty on Stud.Id equals PwtPrzed.StudentId
-                                join ListKier in _db.ListaKierunkow on PwtPrzed.CourseId equals ListKier.Id
-                                select new { ListKier.Id, PwtPrzed.ECTS, PwtPrzed.SubjectName, PwtPrzed.Passed }).ToList();
+            //var studentProp2 = (from Stud in _db.Students
+            //                    join PwtPrzed in _db.PowtarzanePrzedmioty on Stud.Id equals PwtPrzed.StudentId
+            //                    join ListKier in _db.ListaKierunkow on PwtPrzed.CourseId equals ListKier.Id
+            //                    select new { ListKier.Name, PwtPrzed.ECTS, PwtPrzed.SubjectName, PwtPrzed.Passed }).ToList();
 
-            ViewData["prop"] = studentProp;
-            ViewBag["prop1"] = studentProp1;
-            ViewData["prop2"] = studentProp2;
-            ViewData["prop3"] = studentProp3;
             return View();
         }
 
