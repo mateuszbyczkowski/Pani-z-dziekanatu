@@ -11,5 +11,7 @@
     {
         @Html.EditorFor(m => m)
         <input class="btn btn-lg btn-info" style="margin-top: 5px" type="submit" value="Wyślij formularz" />
-    }
+        }
+    <span class="alert-success" style="font-size: 25px">@ViewBag.result</span>
+    <span class="alert-danger" style="font-size: 25px">@ViewBag.alert</span>
 </div>

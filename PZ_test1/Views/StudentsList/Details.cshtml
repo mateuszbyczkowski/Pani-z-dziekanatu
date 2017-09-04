@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            Imię
         </dt>
 
         <dd>
@@ -36,15 +36,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SurName)
+            Nazwisko
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.SurName)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pesel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pesel)
+        </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.City)
+            Miasto
         </dt>
 
         <dd>
@@ -52,23 +58,14 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Street)
+           Ulica
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Street)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Pesel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pesel)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PostCode)
+           Kod pocztowy
         </dt>
 
         <dd>
@@ -76,7 +73,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Local)
+            Numer mieszkania
         </dt>
 
         <dd>
@@ -85,10 +82,17 @@
 
     </dl>
 </div>
-@Html.ActionLink("Kierunki studiów", "CoursesOfStudy", new { id = Model.Id })
+<div class="btn btn-lg btn-warning" style="margin-bottom: 5px;">
+    @Html.ActionLink("Kierunki studiów", "CoursesOfStudy", new { id = Model.Id })
+</div>
+<div class="btn btn-lg btn-warning" style="margin-bottom: 5px;">
+    @Html.ActionLink("Powtarzane przedmioty", "RepeatedSubjects", new { id = Model.Id })
+</div>
 
 <br/>
-<p>
-    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) |
+<p class="btn btn-info">
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) 
+</p>
+<p class="btn btn-info">
     @Html.ActionLink("Wróć do listy studentów", "Index")
 </p>

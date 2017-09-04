@@ -2,24 +2,24 @@
     ViewBag.Title = "CoursesOfStudy";
     Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
 }
-<h2>Kierunki studiów studenta</h2>
+<h2>Lista powtarzanych przedmiotów</h2>
 
 <table class="table table-bordered table-hover">
     <tr>
         <th>
-            ID Studenta
+            Id Studenta
         </th>
         <th>
-            Stopień
+            Nazwa kierunku
         </th>
         <th>
-            Semestr
+            Liczba ECTS
         </th>
         <th>
-            Typstudiow
+            Nazwa przedmiotu
         </th>
         <th>
-            Nazwa
+            Czy zdany
         </th>
     </tr>
     <tr>
@@ -27,16 +27,16 @@
             @ViewData["Id"]
         </td>
         <td>
-            @ViewData["Degree"]
-        </td>
-        <td>
-            @ViewData["Semestr"]
-        </td>
-        <td>
-            @ViewData["TypeOfStudy"]
-        </td>
-        <td>
             @ViewData["Name"]
+        </td>
+        <td>
+            @ViewData["ECTS"]
+        </td>
+        <td>
+            @ViewData["SubjectName"]
+        </td>
+        <td>
+            @ViewData["Passed"]
         </td>
     </tr>
 </table>

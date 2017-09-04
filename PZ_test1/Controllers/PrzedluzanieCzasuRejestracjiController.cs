@@ -119,17 +119,29 @@ namespace PZ_test1.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-        public ActionResult Accept()
+        
+        public ActionResult Accept(int? id)
         {
-
-            return View("Index");
+            if (id != null)
+            {
+                PrzedluzenieSesji wniosekPrzedluzenieSesji = _db.PrzedluzenieSesji.Find(id);
+                if (wniosekPrzedluzenieSesji != null) wniosekPrzedluzenieSesji.Status = "Zatwierdzony";
+                //_db.Entry(wniosekPrzedluzenieSesji).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
-
-        public ActionResult Reject()
+        
+        public ActionResult Reject(int? id)
         {
-
-            return View("Index");
+            if (id != null)
+            {
+                PrzedluzenieSesji wniosekPrzedluzenieSesji = _db.PrzedluzenieSesji.Find(id);
+                if (wniosekPrzedluzenieSesji != null) wniosekPrzedluzenieSesji.Status = "Odrzucony";
+                //_db.Entry(wniosekPrzedluzenieSesji).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

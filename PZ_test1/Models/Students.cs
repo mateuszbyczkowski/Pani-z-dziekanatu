@@ -30,7 +30,6 @@ namespace PZ_test1.Models
         public string Pesel { get; set; }
         public string PostCode { get; set; }
         public string Local { get; set; }
-  //      [ForeignKey("AspNetUsers")]
         public string UserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
         //public virtual AspNetUsers AspNetUsers { get; set; }

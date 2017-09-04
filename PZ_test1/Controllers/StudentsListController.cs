@@ -41,35 +41,54 @@ namespace PZ_test1.Controllers
 
         //trzeba zrobić view model który sklei studenta + kierunki + nazwy kierunkow + ectsy + powtarzane przedmioty
         public ActionResult CoursesOfStudy(int? id)
-        {
-            if (id == null)
+        { 
+            if (id != null)
             {
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                var studentProperties = (from Stud in _db.Students
+                                         join KierStud in _db.KierunkiStudiow on Stud.Id equals KierStud.StudentId
+                                         join ListKier in _db.ListaKierunkow on KierStud.CoursId equals ListKier.Id
+                                         select new { Stud.Id, ListKier.Name, KierStud.Degree, KierStud.Semestr, KierStud.TypeOfStudy }).ToList();
+                if (studentProperties != null)
+                {
+                    var studentProps = studentProperties.Find(a => a.Id == id);
+                    if (studentProperties != null)
+                    {
+                        ViewBag.Id = studentProps.Id;
+                        ViewBag.Name = studentProps.Name;
+                        ViewBag.Degree = studentProps.Degree;
+                        ViewBag.Semestr = studentProps.Semestr;
+                        ViewBag.TypeOfStudy = studentProps.TypeOfStudy;
+                    }
+                }
             }
-
-            //var studentProp = (from Stud in _db.Students
-            //                   join KierStud in _db.KierunkiStudiow on Stud.Id equals KierStud.StudentId
-            //                   select new { KierStud.CoursId, KierStud.Degree, KierStud.Semestr, KierStud.TypeOfStudy }).ToList();
-
-            //var studentProp3 = (from Stud in _db.Students
-            //                    join KierStud in _db.KierunkiStudiow on Stud.Id equals KierStud.StudentId
-            //                    join PwtPrzed in _db.PowtarzanePrzedmioty on Stud.Id equals PwtPrzed.StudentId.Value
-            //                    join ListKier in _db.ListaKierunkow on KierStud.CoursId equals ListKier.Id
-            //                    where PwtPrzed.CourseId == ListKier.Id
-            //                    select new { ListKier.Id, KierStud.Degree, KierStud.Semestr, KierStud.TypeOfStudy, PwtPrzed.SubjectName, PwtPrzed.ECTS, PwtPrzed.Passed }).ToList();
-
-            //var studentProp1 = (from Stud in _db.Students
-            //                    join KierStud in _db.KierunkiStudiow on Stud.Id equals KierStud.StudentId
-            //                    join ListKier in _db.ListaKierunkow on KierStud.CoursId equals ListKier.Id
-            //                    select new { ListKier.Name, KierStud.Degree, KierStud.Semestr, KierStud.TypeOfStudy }).ToList();
-
-            //var studentProp2 = (from Stud in _db.Students
-            //                    join PwtPrzed in _db.PowtarzanePrzedmioty on Stud.Id equals PwtPrzed.StudentId
-            //                    join ListKier in _db.ListaKierunkow on PwtPrzed.CourseId equals ListKier.Id
-            //                    select new { ListKier.Name, PwtPrzed.ECTS, PwtPrzed.SubjectName, PwtPrzed.Passed }).ToList();
-
             return View();
         }
+
+        public ActionResult RepeatedSubjects(int? id)
+        {
+            if (id != null)
+            {
+                var studentProps = (from Stud in _db.Students
+                                    join PwtPrzed in _db.PowtarzanePrzedmioty on Stud.Id equals PwtPrzed.StudentId
+                                    join ListKier in _db.ListaKierunkow on PwtPrzed.CourseId equals ListKier.Id
+                                    select new { Stud.Id, ListKier.Name, PwtPrzed.ECTS, PwtPrzed.SubjectName, PwtPrzed.Passed }).ToList();
+                if (studentProps != null)
+                {
+                    var studentProperties = studentProps.Find(a => a.Id == id);
+                    if (studentProperties != null)
+                    {
+                        ViewBag.Id = studentProperties.Id;
+                        ViewBag.Name = studentProperties.Name;
+                        ViewBag.ECTS = studentProperties.ECTS;
+                        ViewBag.SubjectName = studentProperties.SubjectName;
+                        ViewBag.Passed = studentProperties.Passed;
+                    }
+                }
+            }  
+            return View();
+        }
+
+
 
         // GET: StudentsList/Create
         public ActionResult Create()
@@ -146,7 +165,7 @@ namespace PZ_test1.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Students students = _db.Students.Find(id);
-            _db.Students.Remove(students);
+            if (students != null) _db.Students.Remove(students);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }

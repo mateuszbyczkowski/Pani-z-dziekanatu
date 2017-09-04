@@ -122,22 +122,28 @@ namespace PZ_test1.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Accept(int id)
+        public ActionResult Accept(int? id)
         {
-            Warunki wniosekWarunek = _db.Warunki.Find(id);
-            if (wniosekWarunek != null) wniosekWarunek.Status = "Zaakceptowany";
-            _db.Entry(wniosekWarunek).State = EntityState.Modified;
-            _db.SaveChanges();
-            return View("Index");
+            if (id != null)
+            {
+                Warunki wniosekWarunek = _db.Warunki.Find(id);
+                if (wniosekWarunek != null) wniosekWarunek.Status = "Zatwierdzony";
+                //_db.Entry(wniosekWarunek).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+           return RedirectToAction("Index");
         }
 
-        public ActionResult Reject(int id)
+        public ActionResult Reject(int? id)
         {
-            Warunki wniosekWarunek = _db.Warunki.Find(id);
-            if (wniosekWarunek != null) wniosekWarunek.Status = "Odrzucony";
-            _db.Entry(wniosekWarunek).State = EntityState.Modified;
-            _db.SaveChanges();
-            return View("Index");
+            if (id != null)
+            {
+                Warunki wniosekWarunek = _db.Warunki.Find(id);
+                if (wniosekWarunek != null) wniosekWarunek.Status = "Odrzucony";
+                //_db.Entry(wniosekWarunek).State = EntityState.Modified;
+                _db.SaveChanges();
+            }        
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

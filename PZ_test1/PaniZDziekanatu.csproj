@@ -315,6 +315,7 @@
     <Content Include="Views\FormList\Index.cshtml" />
     <Content Include="Views\FormList\Warunki.cshtml" />
     <Content Include="Views\FormList\Przedluzenia.cshtml" />
+    <Content Include="Views\StudentsList\RepeatedSubjects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

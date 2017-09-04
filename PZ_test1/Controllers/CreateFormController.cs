@@ -1,17 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using PZ_test1.Models;
+using WebGrease.Css.Extensions;
 
 namespace PZ_test1.Controllers
 {
     [Authorize(Roles = "Student")]
     public class CreateFormController : Controller
     {
-        // GET: CreateForm
         DziekanatDbContext _db = new DziekanatDbContext();
+        protected UserManager<ApplicationUser> UserManager { get; set; }
+        public CreateFormController()
+        {
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this._db));
+        }
+        ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+        // GET: CreateFor
         public ActionResult Index()
         {
             return View();
@@ -19,7 +30,19 @@ namespace PZ_test1.Controllers
 
         public ActionResult CreateFormPrzedluzenie()
         {
-            return View();
+            PrzedluzenieSesji wniosek = new PrzedluzenieSesji();
+            var student = user.Students;
+            wniosek.StudentId = student.Id;
+            wniosek.Imie = student.FirstName;
+            wniosek.Nazwisko = student.SurName;
+            wniosek.NrLegitymacji = student.Index.ToString();
+            wniosek.Kierunek = student.KierunkiStudiow.First().ListaKierunkow.Name;
+            wniosek.Semestr = student.KierunkiStudiow.First().Semestr;
+            wniosek.Status = "Niezatwierdzony";
+            wniosek.Przedmiot = student.PowtarzanePrzedmioty.First().SubjectName;
+            wniosek.TrybStudiow = student.KierunkiStudiow.First().TypeOfStudy;
+            
+            return View(wniosek);
         }
 
         [HttpPost]
@@ -27,17 +50,44 @@ namespace PZ_test1.Controllers
         {
             if (ModelState.IsValid)
             {
-                wniosek.Status = "Niezatwierdzony";
-                _db.PrzedluzenieSesji.Add(wniosek);
-                _db.SaveChanges();
-                return View("CreateFormPrzedluzenie");
+                if (user != null)
+                {
+                    var student = user.Students;
+                    if (student != null)
+                    {
+                        if (!student.PrzedluzeniaSesji.Contains(wniosek))
+                        {
+                            wniosek.StudentId = student.Id;
+                            wniosek.Status = "Niezatwierdzony";
+                            _db.PrzedluzenieSesji.Add(wniosek);
+                            _db.SaveChanges();
+                            ViewBag.result = "Twój formularz został wysłany!";
+                            return View("CreateFormPrzedluzenie");
+                        }
+                        ViewBag.alert = "Nie możesz wysłać dwoch takich samych formularzy!";
+                        return View("CreateFormPrzedluzenie");
+                    }
+                }
             }
             return View("CreateFormPrzedluzenie", wniosek);
         }
 
         public ActionResult CreateFormPowtarzanie()
         {
-            return View();
+            Warunki wniosek = new Warunki();
+            var student = user.Students;
+            wniosek.StudentsId = student.Id;
+            wniosek.Imie = student.FirstName;
+            wniosek.Nazwisko = student.SurName;
+            wniosek.NrLegitymacji = student.Index.ToString();
+            wniosek.Kierunek = student.KierunkiStudiow.First().ListaKierunkow.Name;
+            wniosek.Semestr = student.KierunkiStudiow.First().Semestr;
+            wniosek.Status = "Niezatwierdzony";
+            wniosek.Przedmiot = student.PowtarzanePrzedmioty.First().SubjectName;
+            wniosek.TrybStudiow = student.KierunkiStudiow.First().TypeOfStudy;
+            wniosek.ECTS = student.PowtarzanePrzedmioty.First().ECTS.ToString();
+            
+            return View(wniosek);
         }
 
         [HttpPost]
@@ -45,10 +95,24 @@ namespace PZ_test1.Controllers
         {
             if (ModelState.IsValid)
             {
-                wniosek.Status = "Niezatwierdzony";
-                _db.Warunki.Add(wniosek);
-                _db.SaveChanges();
-                return View("CreateFormPowtarzanie");
+                if (user != null)
+                {
+                    var student = user.Students;
+                    if (student != null)
+                    {
+                        if (student.Warunki.Contains(wniosek))
+                        {
+                            ViewBag.alert = "Nie możesz wysłać dwoch takich samych formularzy!";
+                            return View("CreateFormPowtarzanie");
+                        }
+                        wniosek.StudentsId = student.Id;
+                        wniosek.Status = "Niezatwierdzony";
+                        _db.Warunki.Add(wniosek);
+                        _db.SaveChanges();
+                        ViewBag.result = "Twój formularz został wysłany!";
+                        return View("CreateFormPowtarzanie");
+                    }
+                }
             }
             return View("CreateFormPowtarzanie", wniosek);
         }
