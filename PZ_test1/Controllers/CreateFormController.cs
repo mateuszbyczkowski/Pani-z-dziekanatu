@@ -124,9 +124,40 @@ namespace PZ_test1.Controllers
 
         public ActionResult TakeDate(int? id)
         {
+            var studentDate = (from Stud in _db.Students join Term in _db.Termin on Stud.Id equals Term.StudentId
+                                select new { Stud.Id, Term.Date, Term.Hour}).ToList();
+            var studentId = user.Students.Id;
+            var date = studentDate.Find(a => a.Id == studentId);
+            
             if (id != null)
             {
-                ViewBag.test = "test";
+                switch (id)
+                {
+                    case 1:
+                    {
+
+                        break;
+                    }
+                    case 2:
+                    {
+                        
+                        break;
+                    }
+                    case 3:
+                    {
+                        
+                        break;
+                    }
+                    case 4:
+                    {
+                        
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
+                }
             }
             return RedirectToAction("CreateFormPowtarzanie");
         }
