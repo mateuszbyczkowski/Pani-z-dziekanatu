@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Zapisywanie sie na przedluzenie legitymacji";
+    ViewBag.Month1 = "Marzec 2017";
+    ViewBag.Month2 = "Październik 2017";
 }
 
 <h2>Zapisz się na wolny termin przedłużania legitymacji już dziś!</h2>
@@ -9,39 +11,40 @@
     <div class="panel with-nav-tabs panel-default">
         <div class="panel-heading">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab1default" data-toggle="tab">Marzec 2017</a></li>
-                <li><a href="#tab2default" data-toggle="tab">Październik 2017</a></li>
+                <li class="active"><a href="#tab1default" data-toggle="tab">@ViewBag.Month1</a></li>
+                <li><a href="#tab2default" data-toggle="tab">@ViewBag.Month2</a></li>
             </ul>
         </div>
         <div class="panel-body">
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="tab1default">
                     <img class="img-responsive image-responsive" src="~/Content/Images/kalendarz-marzec.jpg" />
-                    <a href="@Url.Action("TakeDate", 1)"><span class="calendar calendar-1">@ViewBag.Date1</span></a>
-                    <a href="@Url.Action("TakeDate", 2)"><span class="calendar calendar-2">@ViewBag.Date2</span></a>
-                    <a href="@Url.Action("TakeDate", 3)"><span class="calendar calendar-3">@ViewBag.Date3</span></a>
-                    <a href="@Url.Action("TakeDate", 4)"><span class="calendar calendar-4">@ViewBag.Date4</span></a>
-                    <a href="@Url.Action("TakeDate", 5)"><span class="calendar calendar-5">@ViewBag.Date5</span></a>
-                    <a href="@Url.Action("TakeDate", 6)"><span class="calendar calendar-6">@ViewBag.Date6</span></a>
-                    <a href="@Url.Action("TakeDate", 7)"><span class="calendar calendar-7">@ViewBag.Date7</span></a>
-                    <a href="@Url.Action("TakeDate", 8)"><span class="calendar calendar-8">@ViewBag.Date8</span></a>
-                    <a href="@Url.Action("TakeDate", 9)"><span class="calendar calendar-9">@ViewBag.Date9</span></a>
-                    <a href="@Url.Action("TakeDate", 10)"><span class="calendar calendar-10">@ViewBag.Date10</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 1})"><span class="calendar calendar-1">@ViewBag.Date1</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 2})"><span class="calendar calendar-2">@ViewBag.Date2</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 3})"><span class="calendar calendar-3">@ViewBag.Date3</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 4})"><span class="calendar calendar-4">@ViewBag.Date4</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 5})"><span class="calendar calendar-5">@ViewBag.Date5</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 6})"><span class="calendar calendar-6">@ViewBag.Date6</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 7})"><span class="calendar calendar-7">@ViewBag.Date7</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 8})"><span class="calendar calendar-8">@ViewBag.Date8</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 9})"><span class="calendar calendar-9">@ViewBag.Date9</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 10})"><span class="calendar calendar-10">@ViewBag.Date10</span></a>
                 </div>
                 <div class="tab-pane fade" id="tab2default">
                     <img class="img-responsive image-responsive" src="~/Content/Images/kalendarz-pazdziernik.jpg"/>
-                    <a href="@Url.Action("TakeDate", 11)"><span class="calendar calendar-1 cal-1">@ViewBag.Dateb1</span></a>
-                    <a href="@Url.Action("TakeDate", 12)"><span class="calendar calendar-2 cal-2">@ViewBag.Dateb2</span></a>
-                    <a href="@Url.Action("TakeDate", 13)"><span class="calendar calendar-3 cal-3">@ViewBag.Dateb3</span></a>
-                    <a href="@Url.Action("TakeDate", 14)"><span class="calendar calendar-4 cal-4">@ViewBag.Dateb4</span></a>
-                    <a href="@Url.Action("TakeDate", 15)"><span class="calendar calendar-5 cal-5">@ViewBag.Dateb5</span></a>
-                    <a href="@Url.Action("TakeDate", 16)"><span class="calendar calendar-6 cal-6">@ViewBag.Dateb6</span></a>
-                    <a href="@Url.Action("TakeDate", 17)"><span class="calendar calendar-7 cal-7">@ViewBag.Dateb7</span></a>
-                    <a href="@Url.Action("TakeDate", 18)"><span class="calendar calendar-8 cal-8">@ViewBag.Dateb8</span></a>
-                    <a href="@Url.Action("TakeDate", 19)"><span class="calendar calendar-9 cal-9">@ViewBag.Dateb9</span></a>
-                    <a href="@Url.Action("TakeDate", 20)"><span class="calendar calendar-10 cal-10">@ViewBag.Dateb10</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 11})"><span class="calendar calendar-1 cal-1">@ViewBag.Dateb1</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 12})"><span class="calendar calendar-2 cal-2">@ViewBag.Dateb2</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 13})"><span class="calendar calendar-3 cal-3">@ViewBag.Dateb3</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 14})"><span class="calendar calendar-4 cal-4">@ViewBag.Dateb4</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 15})"><span class="calendar calendar-5 cal-5">@ViewBag.Dateb5</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 16})"><span class="calendar calendar-6 cal-6">@ViewBag.Dateb6</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 17})"><span class="calendar calendar-7 cal-7">@ViewBag.Dateb7</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 18})"><span class="calendar calendar-8 cal-8">@ViewBag.Dateb8</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 19})"><span class="calendar calendar-9 cal-9">@ViewBag.Dateb9</span></a>
+                    <a href="@Url.Action("TakeDate", new {id = 20})"><span class="calendar calendar-10 cal-10">@ViewBag.Dateb10</span></a>
                 </div>
             </div>
         </div>
     </div>
+    <p>@ViewBag.elo</p>
 </div>

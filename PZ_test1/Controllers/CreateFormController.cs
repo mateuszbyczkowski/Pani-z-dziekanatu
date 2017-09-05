@@ -124,42 +124,113 @@ namespace PZ_test1.Controllers
 
         public ActionResult TakeDate(int? id)
         {
-            var studentDate = (from Stud in _db.Students join Term in _db.Termin on Stud.Id equals Term.StudentId
-                                select new { Stud.Id, Term.Date, Term.Hour}).ToList();
-            var studentId = user.Students.Id;
-            var date = studentDate.Find(a => a.Id == studentId);
-            
             if (id != null)
             {
                 switch (id)
                 {
                     case 1:
-                    {
-
+                    { 
+                        ViewBag.Date1 = "Zarezerwowano";
                         break;
                     }
                     case 2:
                     {
-                        
+                        ViewBag.Date2 = "Zarezerwowano";
                         break;
                     }
                     case 3:
                     {
-                        
+                        ViewBag.Date3 = "Zarezerwowano";
                         break;
                     }
                     case 4:
                     {
-                        
+                        ViewBag.Date4 = "Zarezerwowano";
                         break;
                     }
-                    default:
+                    case 5:
                     {
+                        ViewBag.Date5 = "Zarezerwowano";
+                        break;
+                    }
+                    case 6:
+                    {
+                        ViewBag.Date6 = "Zarezerwowano";
+                        break;
+                    }
+                    case 7:
+                    {
+                        ViewBag.Date7 = "Zarezerwowano";
+                        break;
+                    }
+                    case 8:
+                    {
+                        ViewBag.Date8 = "Zarezerwowano";
+                        break;
+                    }
+                    case 9:
+                    {
+                        ViewBag.Date9 = "Zarezerwowano";
+                        break;
+                    }
+                    case 10:
+                    {
+                        ViewBag.Date10 = "Zarezerwowano";
+                        break;
+                    }
+                    case 11:
+                    {
+                        ViewBag.Dateb1 = "Zarezerwowano";
+                        break;
+                    }
+                    case 12:
+                    {
+                        ViewBag.Dateb2 = "Zarezerwowano";
+                        break;
+                    }
+                    case 13:
+                    {
+                        ViewBag.Dateb3 = "Zarezerwowano";
+                        break;
+                    }
+                    case 14:
+                    {
+                        ViewBag.Dateb4 = "Zarezerwowano";
+                        break;
+                    }
+                    case 15:
+                    {
+                        ViewBag.Dateb5 = "Zarezerwowano";
+                        break;
+                    }
+                    case 16:
+                    {
+                        ViewBag.Dateb6 = "Zarezerwowano";
+                        break;
+                    }
+                    case 17:
+                    {
+                        ViewBag.Dateb7 = "Zarezerwowano";
+                        break;
+                    }
+                    case 18:
+                    {
+                        ViewBag.Dateb8 = "Zarezerwowano";
+                        break;
+                    }
+                    case 19:
+                    {
+                        ViewBag.Dateb9 = "Zarezerwowano";
+                        break;
+                    }
+                    case 20:
+                    {
+                        ViewBag.Dateb10 = "Zarezerwowano";
                         break;
                     }
                 }
             }
-            return RedirectToAction("CreateFormPowtarzanie");
+            return View("CreateFormLegitymacja");
         }
     }
 }
