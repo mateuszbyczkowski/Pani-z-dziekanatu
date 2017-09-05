@@ -121,5 +121,14 @@ namespace PZ_test1.Controllers
         {
             return View();
         }
+
+        public ActionResult TakeDate(int? id)
+        {
+            if (id != null)
+            {
+                ViewBag.test = "test";
+            }
+            return RedirectToAction("CreateFormPowtarzanie");
+        }
     }
 }
